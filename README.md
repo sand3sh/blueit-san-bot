@@ -7,3 +7,4 @@ Change log
 -----------------------
 16/10/2020
 Initialized the repository
+Initilazied link to VSCode IDE
