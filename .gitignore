@@ -1,0 +1,13 @@
+*.pyc
+*.db*
+*.log*
+*.info
+rh.json
+venv
+settings.py
+.DS_Store
+macos.sh
+.vscode
+scanner.py
+src/db.json
+node_modules
