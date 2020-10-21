@@ -9,7 +9,6 @@ Change log
 Initialized the repository
 Initilazied link to VSCode IDE
 
-<<<<<<< HEAD
 
 
 Logic
@@ -21,4 +20,5 @@ Now in cycles - Feed 4 Reddit accounts and run the bots for 2 hours + 1 hours sl
 For Phase 1 lets do 2 Bots
 
 21/10/2020
+-------------------------
 Trying first instance of bot
