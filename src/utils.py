@@ -42,7 +42,26 @@ PROBABILITIES = {
 COMMENTS_DISABLED = True
 MAX_CACHE_SIZE = 128
 NUMBER_DAYS_FOR_POST_TO_BE_OLD = 365
-SUBREDDIT_LIST = [] # limit learning and posting to these subreddits. Empty = Random
+SUBREDDIT_LIST = [
+  "circlejerk",
+  "braveryjerk",
+  "jerktalk",
+  "copypasta",
+  "circlejerkcopypasta",
+  "TheHallsOfSagan",
+  #"FortNiteBR",
+  #"CryptoCurrency",
+  "minecraftcirclejerk",
+  "me_irl",
+  "starcraftcirclejerk",
+  "pokemoncirclejerk",
+  "smashcirclejerk",
+  "WTF",
+  "gifs",
+  "ANormalDayInRussia",
+  "hmmm",
+  "AteThePasta"
+] # limit learning and posting to these subreddits. Empty = Random
 DISALLOWED_WORDS_FILENAME = os.path.join(BASE_DIR, "disallowed_words.txt")
 DISALLOWED_SUBS_FILENAME = os.path.join(BASE_DIR, "disallowed_subs.txt")
 # Logging options
