@@ -9,6 +9,7 @@ Change log
 Initialized the repository
 Initilazied link to VSCode IDE
 
+<<<<<<< HEAD
 
 
 Logic
@@ -18,3 +19,6 @@ Now in cycles - Feed 4 Reddit accounts and run the bots for 2 hours + 1 hours sl
 24 / 3 = 8 Batches i.e 8 x 4 = 32 Bots in total
 
 For Phase 1 lets do 2 Bots
+
+21/10/2020
+Trying first instance of bot
