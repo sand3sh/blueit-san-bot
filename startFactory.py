@@ -28,7 +28,7 @@ def startJob1():
     job1 = db.search(Query().job == 'job1')
     for x in range(0, len(job1)):
         print(job1[x]['user'] + "  <---> "+"./blueit-san-bot-"+x)
-        subprocess.call(['./run_linux.sh','-u',job1[x]['user'],'-p',job1[x]['password'],'-c',job1[x]['clientid'],'-s',job1[x]['clientsecret'],'-a','script_by_'+job1[x]['user']], cwd="./blueit-san-bot-"+x)
+        subprocess.call(['./run_linux.sh','-u',job1[x]['user'],'-p',job1[x]['password'],'-c',job1[x]['clientid'],'-s',job1[x]['clientsecret'],'-a','script_by_'+job1[x]['user']], cwd="../blueit-san-bot-"+x)
 
 offset =  time * 0
 t = threading.Timer(10.0+offset, startJob1)
@@ -41,7 +41,7 @@ def startJob2():
     job2 = db.search(Query().job == 'job2')
     for x in range(0, len(job2)):
         print(job2[x]['user'] + "  <---> "+"./blueit-san-bot-"+x)
-        subprocess.call(['./run_linux.sh','-u',job2[x]['user'],'-p',job2[x]['password'],'-c',job2[x]['clientid'],'-s',job2[x]['clientsecret'],'-a','script_by_'+job2[x]['user']], cwd="./blueit-san-bot-"+x)
+        subprocess.call(['./run_linux.sh','-u',job2[x]['user'],'-p',job2[x]['password'],'-c',job2[x]['clientid'],'-s',job2[x]['clientsecret'],'-a','script_by_'+job2[x]['user']], cwd="../blueit-san-bot-"+x)
 
 offset =  time * 1
 t = threading.Timer(10.0+offset, startJob2)
