@@ -17,6 +17,8 @@ import datetime
 from operator import attrgetter, itemgetter
 from logger import log
 from learn import learn
+from tinydb import TinyDB, where, Query
+from tinyrecord import transaction
 
 from utils import (
     DB_DIR,
@@ -40,7 +42,9 @@ from utils import (
     DO_WE_SPIN_COMMENTS,
     DO_WE_REUPLOAD_TO_IMGUR,
     DO_WE_ADD_PARAMS_REUPLOAD,
-    SPINNER_API
+    SPINNER_API,
+    DB_PERM,
+    FLAIRS
 )
 
 args = get_args()
@@ -282,6 +286,8 @@ def random_submission():
     log.info(ED)
     DATE_DIFF = ""
 
+    db_perm = TinyDB(DB_PERM).table('table')
+
     log.info("choosing subreddits")
     if SUBREDDIT_LIST:
       log.info('using SUBREDDIT_LIST: {}'.format(SUBREDDIT_LIST))
@@ -313,7 +319,21 @@ def random_submission():
         )
         del big_upvote_posts
 
-    post_to_repost = random.choice(total_posts)
+    #cr1 checking of post already submitted before or my any thread and taking another post. MAX_TRIES = 10 else break
+    i=1
+    while i < 10:
+        post_to_repost = random.choice(total_posts)
+        log.info('[SAN] Checking submission no. '+str(i)+' post_id='+str(post_to_repost["id"]))
+        postSubmitted = db_perm.search(Query().id == post_to_repost["id"])
+
+        if len(postSubmitted) > 0:
+            log.info('[SAN] [ALREADY SUBMITTED] '+postSubmitted[0]['id'])
+        else:
+           break
+        i += 1
+        if i == 9:
+         log.info('[SAN] All submissions are already submitted')
+         return
     # print(post_to_repost)
     # print("doing submission")
     rand_sub = api.submission(id=post_to_repost["id"])
@@ -349,6 +369,15 @@ def random_submission():
 
             # Submit the same content to the same subreddit. Prepare your salt picks
             api.subreddit(rand_sub.subreddit.display_name).submit(**params)
+            #add the ids to tracked list to avoid resubmission by other threads
+            table = TinyDB('db.json').table('table')
+            with transaction(table) as tr:
+                #insert a new record
+                tr.insert({'id': rand_sub.id})
+            # adding to my san custom DB
+            with transaction(db_perm) as tr:
+                tr.insert({'id': rand_sub.id})
+
         except praw.exceptions.APIException as e:
             raise e
         except Exception as e:

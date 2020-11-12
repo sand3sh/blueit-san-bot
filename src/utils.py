@@ -31,6 +31,10 @@ MIN_SCORE = 0  # for posts to repost
 SUBMISSION_SEARCH_TEMPLATE = f"https://api.pushshift.io/reddit/search/submission/?after={{after}}&before={{before}}&sort_type=score&sort=desc&subreddit={{subreddit}}&score=>{SUBREDDIT_THRESHOLD}"
 DAY = 86400  # POSIX day (exact value)
 MINUTE = 60
+#custom command s@n
+DB_PERM = "/root/db_perm.json"
+FLAIRS = {"id1": "99845830-3de1-11e8-b68b-0ebc94cb15f2","text2":"HUMOR","id2":"d542b73e-0d46-11e8-87b5-0ec29b969b4a","text2":"ARTISTIC"}
+#custom command s@n
 PROBABILITIES = {
   "REPLY": 0.002,
   "SUBMISSION": 0.005,
