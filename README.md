@@ -22,3 +22,11 @@ For Phase 1 lets do 2 Bots
 21/10/2020
 -------------------------
 Trying first instance of bot
+
+
+HOW TO RUN THE MULTI-BOTS
+--------------------------
+0. Add any accounts in acks.csv in below format
+
+1. Run below command
+python3.6 startFactory.py

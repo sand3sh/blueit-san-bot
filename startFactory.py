@@ -65,4 +65,4 @@ t = threading.Timer(10.0+offset, startJob3)
 t.start()
 
 #print(db.all())
-print('Main exite')
+print('Main exited')

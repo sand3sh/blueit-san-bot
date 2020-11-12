@@ -320,20 +320,22 @@ def random_submission():
         del big_upvote_posts
 
     #cr1 checking of post already submitted before or my any thread and taking another post. MAX_TRIES = 10 else break
+    print('[SAN] Sumbitting now')
     i=1
     while i < 10:
         post_to_repost = random.choice(total_posts)
-        log.info('[SAN] Checking submission no. '+str(i)+' post_id='+str(post_to_repost["id"]))
+        print('[SAN] Checking submission no. '+str(i)+' post_id='+str(post_to_repost["id"]))
         postSubmitted = db_perm.search(Query().id == post_to_repost["id"])
 
         if len(postSubmitted) > 0:
-            log.info('[SAN] [ALREADY SUBMITTED] '+postSubmitted[0]['id'])
+            print('[SAN] [ALREADY SUBMITTED] '+postSubmitted[0]['id'])
         else:
            break
         i += 1
         if i == 9:
-         log.info('[SAN] All submissions are already submitted')
+         print('[SAN] All submissions are already submitted')
          return
+    print('[SAN] Post available')
     # print(post_to_repost)
     # print("doing submission")
     rand_sub = api.submission(id=post_to_repost["id"])
@@ -353,7 +355,7 @@ def random_submission():
             # Check if the we're reposting a selfpost or a link post.
             # Set the required params accodingly, and reuse the content
             # from the old post
-            if DO_WE_SPIN_TITLES:
+            if DO_WE_SPIN_TITLES: 
                 rand_sub.title = rewrite_text(SPINNER_API, rand_sub.title)
             else:
                 rand_sub.title = rand_sub.title
