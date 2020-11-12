@@ -287,6 +287,8 @@ def random_submission():
     DATE_DIFF = ""
 
     db_perm = TinyDB(DB_PERM).table('table')
+    with transaction(db_perm) as tr:
+        tr.insert({'session': str(time.time())})
 
     log.info("choosing subreddits")
     if SUBREDDIT_LIST:
