@@ -1,1 +1,6 @@
 db.json
+nohup.out
+out.txt
+run.pid
+*.pid
+*.out
